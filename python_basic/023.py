@@ -27,3 +27,42 @@ Two      Three
     Four
 '''
 
+
+###앞의 상속이 우선 탐색된다.
+class One : x = 1        
+class Two(One) : x = 2     
+class Three(One) : x = 3
+class Four(Two, Three) : pass
+
+i = Four()
+print(i.x)  #2
+
+'''--------------------------------'''
+class One : x = 1        
+class Two(One) : x = 2     
+class Three(One) : x = 3
+class Four(Three, Two) : pass
+
+i = Four()
+print(i.x)  #3
+
+
+
+### 앞의 상속이 우선 탐색된다.
+class One : x = 1        
+class Two(One) : x = 2     
+class Three(One) : x = 3
+class Four(Two, One) : pass
+
+i = Four()
+print(i.x)  #2
+
+
+### Cannot create a consistent method resolution
+class One : x = 1        
+class Two(One) : x = 2     
+class Three(One) : x = 3
+class Four(One, Two) : pass
+
+i = Four()
+print(i.x)  
