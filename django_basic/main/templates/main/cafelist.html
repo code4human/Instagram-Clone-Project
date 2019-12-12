@@ -1,0 +1,32 @@
+hello cafelist
+{% for i in cafelistobj %}
+    <h1>{{ i.name }}</h1> <!--원래 i['name']로 해야 하지만 여기선 다르게 한다.-->
+    <p>{{ i.content }}</p>
+    <p>{{ forloop.counter }}</p>   <!--1부터 시작 1 2 3-->
+    {% if forloop.counter == 1 %}
+      <p>if문 입니다.</p>
+    {% elif forloop.counter == 2 %}
+      <p>elif문 입니다.</p>
+    {% else %}
+      <p>else문 입니다.</p>
+    {% endif %}
+{% endfor %}
+
+{% with value='hello world' %}
+<h1>{{ value }}</h1>
+{% endwith %}
+
+<!--
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>cafe</title>
+    </head>
+    <body>
+        <form action="" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">저장</button>
+    </body>
+</html>
+-->
