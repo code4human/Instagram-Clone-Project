@@ -34,6 +34,50 @@
 	width: 22px;
 	height: 21px;
 }
+.sprite_more_icon {
+    display: inline-block;
+	background: url('../imgs/insta-sprite.png') no-repeat -68px -390px;
+	width: 14px;
+	height: 4px;
+}
+.sprite_heart_icon_btn {
+    display: inline-block;
+    background: url('../imgs/insta-sprite.png') no-repeat -162px -354px;
+	width: 24px;
+	height: 21px;
+}
+.sprite_bubble_icon {
+    display: inline-block;
+	background: url('../imgs/insta-sprite.png') no-repeat -189px -353px;
+	width: 22px;
+	height: 22px;
+}
+.sprite_share_icon {
+    display: inline-block;
+	background: url('../imgs/insta-sprite.png') no-repeat -389px -307px;
+	width: 11px;
+	height: 19px;
+}
+.sprite_bookmark_icon {
+    display: inline-block;
+	background: url('../imgs/insta-sprite.png') no-repeat -408px -54px;
+	width: 16px;
+	height: 20px;
+}
+.sprite_small_heart_icon {
+    display: inline-block;
+    background: url('../imgs/insta-sprite.png') no-repeat -132px -386px;
+	width: 11px;
+	height: 8px;
+}
+
+.m_text{
+    font-size: 14px;
+    font-weight: bold;
+}
+.s_text{
+    font-size: 12px;
+}
 
 body{
     background: #fafafa;
@@ -118,6 +162,130 @@ body{
     display: flex;
     justify-content: space-between;
 }
-#header .right_icons > div{
-    
+
+#main_container{
+    padding-top: 130px;
+    display: flex;
+    justify-content: center;
+}
+
+#main_container .inner{
+    width: 935px;
+    /*height: 500px;*/
+    background:white;
+}
+
+.contents_box{}
+
+.contents{
+    width: 614px;
+    /*height: 500px;*/
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 3px;
+    margin-bottom: 60px;
+    background: white;
+}
+
+.contents .top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.contents .top .profile_img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.contents .top .profile_img img{
+    width: 100%; /* 내 얼굴이 들어오게 크기 맞춤. 부모의 100퍼센트로 크기 받음*/
+
+}
+.contents .top .user_container{
+    display: flex;
+}
+.contents .img_section{
+    overflow:hidden;
+}
+.contents .img_section img{
+    width: 100%;
+    /*height: 500px;*/
+}
+.contents .bottom_icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.contents .bottom_icons .left_icons{
+    display: flex;
+}
+.contents .bottom_icons .left_icons >div{
+    margin-right: 10px;
+    cursor: pointer;
+}
+.contents .bottom_icons .left_icons >div:nth-child(3){
+    margin-left: 5px;
+    margin-top: 2px;
+}
+.contents .bottom_icons .right_icons >div{
+    cursor: pointer;
+}
+.contents .likes{
+    padding: 5px 20px;
+    color: #262626;
+}
+
+.contents .comment_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+.contents .comment_container .comment{
+    display: flex;
+    font-size: 12px;
+}
+.contents .comment_container .comment .nick_name{
+    margin-right: 10px;
+}
+
+.contents .timer{
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    color: #999;
+    border-bottom: 1px solid rgba(0,0,0,0.09);
+    padding: 10px 20px;
+}
+
+.contents .comment_field{
+    min-height: 56px;
+    padding: 0 20px;
+    position: relative;
+}
+.contents .comment_field input{
+    width: 100px;
+    height: 56px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.contents .comment_field input:focus ~ .upload_btn{
+    pointer-events: initial; /*포인터이벤트 초기화*/
+    opacity: 1;
+}
+
+.contents .comment_field .upload_btn{
+    color: #3897f0;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    pointer-events: none; /*HTML 요소에 정의된 클릭, 상태(hover,active등), 커서 옵션들이 비활성화*/
+    opacity : 0.6;
 }
