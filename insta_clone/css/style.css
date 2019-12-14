@@ -40,7 +40,7 @@
 	width: 14px;
 	height: 4px;
 }
-.sprite_heart_icon_btn {
+.sprite_outline_heart_icon {
     display: inline-block;
     background: url('../imgs/insta-sprite.png') no-repeat -162px -354px;
 	width: 24px;
@@ -70,6 +70,12 @@
 	width: 11px;
 	height: 8px;
 }
+.heart_btn.on .sprite_outline_heart_icon {
+	background: url('../imgs/insta-sprite.png') no-repeat -84px -354px;
+	width: 24px;
+	height: 21px;
+}
+
 
 .m_text{
     font-size: 14px;
@@ -89,7 +95,11 @@ body{
     left: 0;
     top: 0;
     z-index: 999;
+    background: white;
     border-bottom:1px solid rgba(0,0,0,0.1);
+}
+#header.on {
+    position: fixed; /*스크롤시 헤더 고정. js파일에서 on 추가*/
 }
 #header .inner{
     width: 975px;
@@ -98,6 +108,14 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 1s; /*화면전환 속성. 모든 속성에 구동시간은 1초*/ 
+}
+#header.on .inner{
+    height: 52px;
+}
+#header.on .logo div:nth-child(2){
+    opacity: 0; /*display: none; 도 작동했음*/
+    transition: all 0.5s;
 }
 #header .inner .logo div{
     vertical-align: middle;
@@ -114,6 +132,10 @@ body{
     position: absolute;
     right: -15px;
     top: 0;
+}
+#header.on .inner .logo .sprite_insta_logo:after{
+    opacity: 0;
+    transition: all 0.5s;
 }
 #header .inner .logo a{
     color: transparent;
@@ -179,7 +201,7 @@ body{
 .contents_box{}
 
 .contents{
-    width: 614px;
+    max-width: 614px; /*최대 좌우값만 설정, 반응형 조절은 js로*/
     /*height: 500px;*/
     border: 1px solid rgba(0,0,0,0.09);
     border-radius: 3px;
@@ -298,7 +320,10 @@ body{
     right: 0;
     top: 0;
 }
-
+.side_box.on{
+    position: fixed;
+    top: 100px;
+}
 .side_box .profile_thumb{
     width: 50px;
     height: 50px;
@@ -367,4 +392,77 @@ body{
     overflow-x: hidden;
     overflow-y: auto; /*컨텐츠가 많아지면 스크롤 만들어줌*/
     /*overflow: hidden auto 로도 쓸 수 있지만 IE 브라우저에서 문제발생*/
+}
+
+.hidden_menu{ /*반응형 조절은 js로*/
+    width: 614px;
+    /*height: 100px;*/
+    /*background: red;*/
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 3px;
+}
+
+.hidden_menu .scroll_inner{
+    height: 100px;
+    width: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 13px;
+}
+.hidden_menu .scroll_inner .user{ /*스토리 간의 정렬*/
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column; /*여기에 justify-content하면 위 아래로 붙는다.*/
+    align-items: center;
+    margin-right: 15px;
+    justify-content: space-between;
+}
+.hidden_menu .scroll_inner .user .id{
+    font-size: 12px;
+    color: #262626;
+}
+.hidden_menu .thumb_img{
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.hidden_menu .thumb_img img{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width:1000px){
+    #header .inner{
+        width: 97.5%; /*백분율 계산 975px/1000px * 100 */
+    }
+    #main_container .inner{
+        width: 93.5%;
+    }
+    .contents_box{
+        display: flex; /*화면 축소시 게시글 가운데 정렬*/
+        flex-direction: column; 
+        align-items: center;
+    }
+    .side_box{
+        display: none;
+    }
+
+    #main_container{
+        padding-top: 220px;
+    }
+}
+
+@media screen and (max-width:650px){
+    #header .search_box{
+        display: none;
+    }
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    Document(html) Object Model
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+    .box.on {  /*선택자를 많이 갖고 있을 수록 더 우선순위 선택을 받음*/
+        background: green;
+    }
+</style>
+</head>
+<body>
+    <section id="all">
+        <header id = "a">
+        </header>
+        <section id="b">
+            <div class="box on"></div>
+        </section>
+    </section>
+
+<script>
+    //클래스 이름으로 가져오기
+    //document.getElementsByClassName('box');
+    //선택자로 가져오기 (변수에 담아쓰는게 좋다.)
+    const box = document.querySelector('.box');
+    //동일한 이름을 가진 여러 선택자 (배열로 다룬다.)
+    //const box = document.querySelectorAll('.box');
+
+    console.log(box);
+
+    //클릭시 변동
+    box.addEventListener('click', function(){
+        console.log('눌렀어');
+        //box.style.background = "blue";
+        //box.classList.add('on'); //클릭시 <div class="box">가 <div class="box on">됨
+        //box.classList.remove('on'); //클릭시 <div class="box on">가 <div class="box">됨
+        box.classList.toggle('on'); //스위치와 같은 것. 클릭한 대상에 on이 있으면 제거, 없으면 추가.
+    });
+</script>
+</body>
+</html>
