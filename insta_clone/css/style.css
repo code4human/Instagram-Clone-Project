@@ -46,6 +46,11 @@
 	width: 24px;
 	height: 21px;
 }
+.heart_btn .sprite_outline_heart_icon.on {
+	background: url('../imgs/insta-sprite.png') no-repeat -84px -354px;
+	width: 24px;
+	height: 21px;
+}
 .sprite_bubble_icon {
     display: inline-block;
 	background: url('../imgs/insta-sprite.png') no-repeat -189px -353px;
@@ -64,17 +69,16 @@
 	width: 16px;
 	height: 20px;
 }
+.sprite_bookmark_icon.on {
+    background: url('../imgs/insta-sprite.png') no-repeat -296px -354px;
+}
 .sprite_small_heart_icon {
     display: inline-block;
     background: url('../imgs/insta-sprite.png') no-repeat -132px -386px;
 	width: 11px;
 	height: 8px;
 }
-.heart_btn.on .sprite_outline_heart_icon {
-	background: url('../imgs/insta-sprite.png') no-repeat -84px -354px;
-	width: 24px;
-	height: 21px;
-}
+
 
 
 .m_text{

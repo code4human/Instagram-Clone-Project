@@ -20,7 +20,9 @@
         <header id = "a">
         </header>
         <section id="b">
-            <div class="box on"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
         </section>
     </section>
 
@@ -28,11 +30,16 @@
     //클래스 이름으로 가져오기
     //document.getElementsByClassName('box');
     //선택자로 가져오기 (변수에 담아쓰는게 좋다.)
-    const box = document.querySelector('.box');
+    //const box = document.querySelector('.box');
     //동일한 이름을 가진 여러 선택자 (배열로 다룬다.)
-    //const box = document.querySelectorAll('.box');
+    const box = document.querySelectorAll('.box');
 
-    console.log(box);
+    console.log(box); 
+    /* [div.box, div.box, div.box]
+    0: div.box
+    1: div.box
+    2: div.box
+    */
 
     //클릭시 변동
     box.addEventListener('click', function(){
@@ -42,6 +49,7 @@
         //box.classList.remove('on'); //클릭시 <div class="box on">가 <div class="box">됨
         box.classList.toggle('on'); //스위치와 같은 것. 클릭한 대상에 on이 있으면 제거, 없으면 추가.
     });
+
 </script>
 </body>
 </html>
