@@ -274,7 +274,11 @@ body{
 }
 .contents .comment_container .comment{
     display: flex;
+    flex-direction: column; /*code4human 커피 맛있겠다!! bbokku 커피가 맛있어보여요  여러 댓글을 세로 배치*/
     font-size: 12px;
+}
+.contents .comment_container .comment .comment-detail{
+    display: flex; /*code4human 커피 맛있겠다!! 하나의 댓글 속 닉네임, 코멘트를 가로 배치*/
 }
 .contents .comment_container .comment .nick_name{
     margin-right: 10px;
@@ -313,7 +317,7 @@ body{
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    pointer-events: none; /*HTML 요소에 정의된 클릭, 상태(hover,active등), 커서 옵션들이 비활성화*/
+    /*pointer-events: none;*/  /*HTML 요소에 정의된 클릭, 상태(hover,active등), 커서 옵션들이 비활성화*/
     opacity : 0.6;
 }
 

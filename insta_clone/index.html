@@ -96,13 +96,13 @@
                     <div class="bottom_icons">
                         <div class="left_icons">
                             <div class="heart_btn">
-                                <div class="sprite_outline_heart_icon" data-name="heartbeat"></div>
+                                <div class="sprite_outline_heart_icon" name="37" data-name="heartbeat"></div>
                             </div>
                             <div class="sprite_bubble_icon"></div>
                             <div class="sprite_share_icon" data-name="share"></div>
                         </div>
                         <div class="right_icons">
-                            <div class="sprite_bookmark_icon" data-name="bookmark"></div>
+                            <div class="sprite_bookmark_icon" name="37" data-name="bookmark"></div>
                         </div>
                     </div>
 
@@ -111,12 +111,16 @@
                         <!--좋아요-->
                         <span id="like-count-37">2,351</span>
                         <!--개-->
+
+                        <span id="bookmark-count-37">2,351</span>
                     </div>
 
                     <div class="comment_container">
-                        <div class="comment">
-                            <div class="nick_name m_text">bbokku</div>
-                            <div class="s_text">커피가 맛있어보여요</div>
+                        <div class="comment" id="comment-list-ajax-post-37">
+                            <div class="comment-detail">
+                                <div class="nick_name m_text">bbokku</div>
+                                <div class="s_text">커피가 맛있어보여요</div>
+                            </div>
                         </div>
                         <div class="small_heart">
                             <div class="sprite_small_heart_icon"></div>
@@ -127,9 +131,9 @@
                         1시간 전
                     </div>
 
-                    <div class="comment_field">
+                    <div class="comment_field" id="add-comment-post-37">
                         <input type="text" placeholder="댓글달기...">
-                        <div class="upload_btn m_text">게시</div>
+                        <div class="upload_btn m_text" data-name="comment">게시</div>
                     </div>
             </div>
 

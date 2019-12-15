@@ -38,26 +38,98 @@ function delegationFunc(e){ //event객체를 받음
         console.log('하트');
 
         //제이쿼리 ajax 통신
+        let pk = elem.getAttribute('name');
         $.ajax({
             type: 'POST', 
             url: 'data/like.json', //통신 가능한 url. json데이터를 통해 받을 것이므로 data라는 폴더 생성.
-            data: 37, //primary key를 통해 넘버링을 찍고, 유저들이 가지고 있는 pk을 통해 갱신을 통해 고유번호를 찍는 등
+            data: {pk}, //primary key를 통해 넘버링을 찍고, 유저들이 가지고 있는 pk을 통해 갱신을 통해 고유번호를 찍는 등
                         // data: {pk} 였는데 pk is not defined이어서 그냥 숫자 data: {37}로 바꿈
                         // Unexpected token '}'이어서 data: 37로 바꿈
+                        //pk를 변수로 받아옴
             dataType: 'json', //내가 보낸 애가 어떤 타입으로 들어올건지
             success: function(response){ //통신이 완료되면 response객체를 받아옴. data/like.json에 있는 데이터
-                let likeCount = document.querySelector('#like-count-37') //#like-count37에 좋아요라는 글자를 넣을 것. 백엔드에서는 pk를 받아서 변수처리 한다. document.querySelector('#like-count37-' +pk)이렇게 작업을 원래 하지만 우리는 데이터가 없으니.
+                let likeCount = document.querySelector('#like-count-37'); //#like-count37에 좋아요라는 글자를 넣을 것. 백엔드에서는 pk를 받아서 변수처리 한다. document.querySelector('#like-count37-' +pk)이렇게 작업을 원래 하지만 우리는 데이터가 없으니.
                 likeCount.innerHTML = '좋아요' + response.like_count + '개';
-            }
+            },
+            
             error: function(request, status, error){ //ajax통신 에러 났을 때 처리. request, staus 매개변수를 받는다.
                 alert('로그인이 필요합니다.');
                 window.location.replace('https://www.naver.com'); //백 딴에서는 다시 회원가입 창으로 돌아가게 하기 위해 window.location.replace('accounts/login') 이런식으로 받음. 우리는 넘어갈 곳이 없으니 
             }
-        })
+            
+        });
 
     }else if(elem.matches('[data-name="bookmark"]')){
         console.log('북마크');
-    }else if(elem.matches('[data-name="share"]')){
+
+        //pk값을 받아오는 법
+        let pk = elem.getAttribute('name');
+        $.ajax({
+            type:'POST',
+            url: 'data/bookmark.json',
+            data: {pk},
+            dataType: 'json',
+            success: function(response){
+                let bookmarkCount = document.querySelector('#bookmark-count-'+pk); 
+                bookmarkCount.innerHTML = '북마크' + response.bookmark_count + '개'; //돌아오는 response에다 
+            },
+            
+            error: function(request, status, error){ //ajax통신 에러 났을 때 처리. request, staus 매개변수를 받는다.
+                alert('로그인이 필요합니다.');
+                window.location.replace('https://www.naver.com'); //백 딴에서는 다시 회원가입 창으로 돌아가게 하기 위해 window.location.replace('accounts/login') 이런식으로 받음. 우리는 넘어갈 곳이 없으니 
+            }
+            
+        });
+    }else if(elem.matches('[data-name="comment"]')){ //comment는 게시 버튼을 누르고 달리게 됨. <div class="upload_btn m_text"
+        let comment = document.querySelector('#add-comment-post-37 > input[type=text]').value; //#add-comment-post-37 안에 있는 input의 타입이 text인 친구의 value값(input에 쓴 글자들)을 가져온다. #add-comment-post-37은 input위에 <div class="comment_field" 에 넣어준다.
+        console.log(comment);
+
+        if(comment.length > 140){
+            alert('댓글은 최대 140자 입력 가능합니다. 현재 글자수 : ' + comment.length);
+            return;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: './comment.html', //댓글은 DOM을 하나하나씩 쏘는 것이므로, 데이터타입을 html로 받는다.
+            data: {'pk': 37,
+                    'content': comment,},
+            dataType: 'html',
+            success: function(data){
+                document.querySelector('#comment-list-ajax-post-37').insertAdjacentHTML('afterbegin',data); //글자가 찍힐 곳을 정해야 한다. 댓글창 class="comment"에 삽입.  insertAdjacentHTML은 html문서에 태그 등 삽입
+            }, 
+            error: function(request, status, error){ 
+                alert('문제가 발생했습니다.');
+                window.location.replace('https://www.naver.com'); 
+            }
+        });
+
+        document.querySelector('#add-comment-post-37 > input[type=text]').value='' //게시를 클릭하고 댓글 업로드 되면 input창에 있는 내용은 지우기
+    }else if(elem.matches('[data-name="comment-delete"]')){
+        $.ajax({
+            type: 'POST',
+            url: 'data/delete.json',
+            data: {
+                'pk':37,
+                //통신으로 개발하면 csrf토큰이라는 걸 받게 된다. 이건 장고에서 보안을 위해 암호화시키는 방법이다. 그 부분은 생략하겠다.
+            },
+            dataType:'json',
+            success:function(response){
+                if(response.status){ //delete.json에서 status를 1로 지정함. 나중에 백엔드 딴에서 0, 1이냐에 따라 삭제여부를 설정가능
+                    let comt = document.querySelector('.comment-detail');
+                    comt.remove();
+                }
+            },
+            error: function(request, status, error){ 
+                alert('문제가 발생했습니다.');
+                window.location.replace('https://www.naver.com'); 
+            }
+        });
+    }
+
+
+
+    else if(elem.matches('[data-name="share"]')){
         console.log('공유');
     }else if(elem.matches('[data-name="more"]')){
         console.log('더보기');
