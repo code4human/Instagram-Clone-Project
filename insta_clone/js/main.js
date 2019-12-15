@@ -12,9 +12,11 @@ const sidebox = document.querySelector('.side_box');
 const variableWidth = document.querySelectorAll('.contents_box .contents'); //.contents_box안에 있는 .contents
 const delegation = document.querySelector('.contents_box');
 
+/*
 heart.addEventListener('click', function(){
     //heart.classList.toggle('on');  //delegationFunc로 이동
 });
+*/
 
 function delegationFunc(e){ //event객체를 받음
     //console.log(e.target);
@@ -34,6 +36,25 @@ function delegationFunc(e){ //event객체를 받음
     if(elem.matches('[data-name="heartbeat"]')){
         //클릭한 엘리먼트의 대상의 데이터네임 속성이 heartbeat를 가지고 있으면 실행
         console.log('하트');
+
+        //제이쿼리 ajax 통신
+        $.ajax({
+            type: 'POST', 
+            url: 'data/like.json', //통신 가능한 url. json데이터를 통해 받을 것이므로 data라는 폴더 생성.
+            data: 37, //primary key를 통해 넘버링을 찍고, 유저들이 가지고 있는 pk을 통해 갱신을 통해 고유번호를 찍는 등
+                        // data: {pk} 였는데 pk is not defined이어서 그냥 숫자 data: {37}로 바꿈
+                        // Unexpected token '}'이어서 data: 37로 바꿈
+            dataType: 'json', //내가 보낸 애가 어떤 타입으로 들어올건지
+            success: function(response){ //통신이 완료되면 response객체를 받아옴. data/like.json에 있는 데이터
+                let likeCount = document.querySelector('#like-count-37') //#like-count37에 좋아요라는 글자를 넣을 것. 백엔드에서는 pk를 받아서 변수처리 한다. document.querySelector('#like-count37-' +pk)이렇게 작업을 원래 하지만 우리는 데이터가 없으니.
+                likeCount.innerHTML = '좋아요' + response.like_count + '개';
+            }
+            error: function(request, status, error){ //ajax통신 에러 났을 때 처리. request, staus 매개변수를 받는다.
+                alert('로그인이 필요합니다.');
+                window.location.replace('https://www.naver.com'); //백 딴에서는 다시 회원가입 창으로 돌아가게 하기 위해 window.location.replace('accounts/login') 이런식으로 받음. 우리는 넘어갈 곳이 없으니 
+            }
+        })
+
     }else if(elem.matches('[data-name="bookmark"]')){
         console.log('북마크');
     }else if(elem.matches('[data-name="share"]')){
