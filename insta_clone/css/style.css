@@ -234,6 +234,30 @@ body{
 .contents .top .user_container{
     display: flex;
 }
+.contents .sprite_more_icon{
+    position: relative;
+}
+.contents .sprite_more_icon.on .toggle_box{
+    /*토글박스 클릭할 때 마다 on을 줌. sprite_more_icon가 on이 되면 그 안에 있는 toggle_box에 적용*/
+    display: block;
+}
+.contents .toggle_box{
+    text-align: center; /*가운데정렬*/
+    position: absolute; /*공중에 띄움*/
+    right:0;
+    top:20px;
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 3px;
+    display:none; /*팔로우,수정,삭제 박스가 처음엔 보이지 않게*/ 
+}
+.contents .toggle_box > li{
+    padding: 5px 10px;
+    background: #fff;
+}
+.contents .toggle_box > li input{
+    border: none; /*팔로우 버튼만 경계진 것 없앰*/
+    font-size: inherit; /*부모의 폰트를 따라가기*/
+}
 .contents .img_section{
     overflow:hidden;
 }

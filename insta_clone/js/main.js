@@ -125,6 +125,28 @@ function delegationFunc(e){ //event객체를 받음
                 window.location.replace('https://www.naver.com'); 
             }
         });
+    }else if(elem.matches('[data-name="follow"]')){
+        $.ajax({
+            type:'POST',
+            url: 'data/follow.json',
+            data: {
+                'pk':37,
+            },
+            dataType:'json',
+            success: function(response){
+                if(response.status){
+                    document.querySelector('input.follow').value="팔로잉";  //follow가 붙은 input찾음
+                }else{
+                    document.querySelector('input.follow').value="팔로워";
+                }
+                //value값을 바꿔주는 이유는 input태그의 submit이라는 태그를 활용할 것이기 때문.
+                //submit은 버튼인데 value값에 따라 글자가 바뀐다.
+            },
+            error: function(request, status, error){ 
+                alert('문제가 발생했습니다.');
+                window.location.replace('https://www.naver.com'); 
+            }
+        })
     }
 
 
