@@ -141,7 +141,148 @@
                         <input type="text" placeholder="댓글달기...">
                         <div class="upload_btn m_text" data-name="comment">게시</div>
                     </div>
+                </article>
+                <article class="contents">
+                    <header class="top">
+                        <div class="user_container">
+                            <div class="profile_img">
+                                <img src="imgs/tenakim.jpg" alt="김태은">
+                            </div>
+                            <div class="user_name">
+                                <div class="nick_name m_text">code4human</div>
+                                <div class="country s_text">Seoul, South Korea</div>
+                            </div>
+                        </div>
+                        <div class="sprite_more_icon" data-name="more">
+                            <ul class="toggle_box">
+                                <li><input type="submit" class="follow" value="팔로우" data-name="follow"></li>
+                                <li>수정</li>
+                                <li>삭제</li>
+                            </ul>
+                        </div>
+                    </header>    
+
+                    <div class="img_section">
+                        <div class="trans_inner">
+                            <div><img src="imgs/nowon.jpg"></div>
+                        </div>
+                    </div>
+
+                    <div class="bottom_icons">
+                        <div class="left_icons">
+                            <div class="heart_btn">
+                                <div class="sprite_outline_heart_icon" name="37" data-name="heartbeat"></div>
+                            </div>
+                            <div class="sprite_bubble_icon"></div>
+                            <div class="sprite_share_icon" data-name="share"></div>
+                        </div>
+                        <div class="right_icons">
+                            <div class="sprite_bookmark_icon" name="37" data-name="bookmark"></div>
+                        </div>
+                    </div>
+
+                    <div class="likes m_text">
+                        <!--ajax로 문구 대체-->
+                        <!--좋아요-->
+                        <span id="like-count-37">2,351</span>
+                        <!--개-->
+
+                        <span id="bookmark-count-37">2,351</span>
+                    </div>
+
+                    <div class="comment_container">
+                        <div class="comment" id="comment-list-ajax-post-37">
+                            <div class="comment-detail">
+                                <div class="nick_name m_text">bbokku</div>
+                                <div class="s_text">커피가 맛있어보여요</div>
+                            </div>
+                        </div>
+                        <div class="small_heart">
+                            <div class="sprite_small_heart_icon"></div>
+                        </div>
+                    </div>
+
+                    <div class="timer">
+                        1시간 전
+                    </div>
+
+                    <div class="comment_field" id="add-comment-post-37">
+                        <input type="text" placeholder="댓글달기...">
+                        <div class="upload_btn m_text" data-name="comment">게시</div>
+                    </div>
+                </article>
+                <article class="contents">
+                    <header class="top">
+                        <div class="user_container">
+                            <div class="profile_img">
+                                <img src="imgs/tenakim.jpg" alt="김태은">
+                            </div>
+                            <div class="user_name">
+                                <div class="nick_name m_text">code4human</div>
+                                <div class="country s_text">Seoul, South Korea</div>
+                            </div>
+                        </div>
+                        <div class="sprite_more_icon" data-name="more">
+                            <ul class="toggle_box">
+                                <li><input type="submit" class="follow" value="팔로우" data-name="follow"></li>
+                                <li>수정</li>
+                                <li>삭제</li>
+                            </ul>
+                        </div>
+                    </header>    
+
+                    <div class="img_section">
+                        <div class="trans_inner">
+                            <div><img src="imgs/nowon.jpg"></div>
+                        </div>
+                    </div>
+
+                    <div class="bottom_icons">
+                        <div class="left_icons">
+                            <div class="heart_btn">
+                                <div class="sprite_outline_heart_icon" name="37" data-name="heartbeat"></div>
+                            </div>
+                            <div class="sprite_bubble_icon"></div>
+                            <div class="sprite_share_icon" data-name="share"></div>
+                        </div>
+                        <div class="right_icons">
+                            <div class="sprite_bookmark_icon" name="37" data-name="bookmark"></div>
+                        </div>
+                    </div>
+
+                    <div class="likes m_text">
+                        <!--ajax로 문구 대체-->
+                        <!--좋아요-->
+                        <span id="like-count-37">2,351</span>
+                        <!--개-->
+
+                        <span id="bookmark-count-37">2,351</span>
+                    </div>
+
+                    <div class="comment_container">
+                        <div class="comment" id="comment-list-ajax-post-37">
+                            <div class="comment-detail">
+                                <div class="nick_name m_text">bbokku</div>
+                                <div class="s_text">커피가 맛있어보여요</div>
+                            </div>
+                        </div>
+                        <div class="small_heart">
+                            <div class="sprite_small_heart_icon"></div>
+                        </div>
+                    </div>
+
+                    <div class="timer">
+                        1시간 전
+                    </div>
+
+                    <div class="comment_field" id="add-comment-post-37">
+                        <input type="text" placeholder="댓글달기...">
+                        <div class="upload_btn m_text" data-name="comment">게시</div>
+                    </div>
+                </article>
             </div>
+
+            <input type="hidden" id="page" value="0"> <!--무한 스크롤 부분에서 js파일에 page 변수로 간다. 보이지 않아서 type은 hidden-->
 
             <div class="side_box">
                 <div class="user_profile">

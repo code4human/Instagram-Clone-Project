@@ -187,7 +187,11 @@ function resizeFunc(){
 }
 
 function scrollFunc(){
-    console.log(pageYOffset);
+    let scrollHeight = pageYOffset + window.innerHeight; //어느정도 스크롤 됐는지
+    let documentHeight = document.body.scrollHeight; //전체 도큐멘트의 높이값. document의 body로 접근해야함 
+    console.log('scrollHeight : ' + scrollHeight);
+    console.log('documentHeight :' + documentHeight);
+
     if(pageYOffset>=10){
         header.classList.add('on');
 
@@ -203,6 +207,48 @@ function scrollFunc(){
             sidebox.removeAttribute('style');
         }
     }
+
+    if(scrollHeight >= documentHeight){
+        let page = document.querySelector('#page').value; //#page의 밸류값을 받는다.
+        //page는 ajax통신이 얼만큼 되고 남아있는 페이지의 개수가 몇개인지 설정
+        //어느 정도 도달하면 더이상 무한 스크롤 되지 않게 하기 위해.
+        //callMorePostAjax 함수를 만든다.
+        document.querySelector('#page').value = parseInt(page) + 1;
+
+        callMorePostAjax(page);
+
+        if( page > 5 ){ //callMorePostAjax 함수도 끝내기 위해 callMorePostAjax 함수에도 넣어준다.
+            return;
+        }
+    }
+}
+
+function callMorePostAjax(page){
+
+    if( page > 5 ){ 
+        return;
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: './post.html',
+        data:{
+            'page':page,
+        },
+        dataType: 'html',
+        success: addMorePostAjax,
+        error: function(request, status, error){ 
+            alert('문제가 발생했습니다.');
+            window.location.replace('https://www.naver.com'); 
+        }
+    })
+}
+
+function addMorePostAjax(data){
+    //돌아오는 html을 어디에 뿌려줄지 설정 
+    //뿌려주는 위치는 contents_box 안에 article로 하나씩 넣어주면 된다.
+    //contents_box는 맨 위 글로벌 변수로 delegation으로 받아놓음
+    delegation.insertAdjacentHTML('beforeend', data);
 }
 
 //새로고침이 될 때마다 그대로의 위치가 아니라 스크롤이 맨 위로 올라가도록
