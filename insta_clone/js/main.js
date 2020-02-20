@@ -11,6 +11,7 @@ const header = document.querySelector('#header');
 const sidebox = document.querySelector('.side_box');
 const variableWidth = document.querySelectorAll('.contents_box .contents'); //.contents_box안에 있는 .contents
 const delegation = document.querySelector('.contents_box');
+const hidden_menu = document.querySelector('.hidden_menu');
 
 /*
 heart.addEventListener('click', function(){
@@ -167,23 +168,26 @@ function resizeFunc(){
         console.log(calcWidth);
         sidebox.style.left = calcWidth + 'px'; //sidebox.style 스타일 접근
     }
-    if(matchMedia('screen and (max-width : 800px)').matches){  //스크린 좌우가 800px이하로 내려가면 실행
-        //variableWidth.style.width = window.innerWidth -20 + 'px'; 을 querySelectorAll('.contents_box .contents')로 잡아서  배열로 
-        for(let i=0; i<variableWidth.length; i++){
-            variableWidth[i].style.width = window.innerWidth -20 + 'px';
-        }
+    if(matchMedia('screen and (max-width : 1000px)').matches){
+        hidden_menu.style.display = "block"; //css @media screen and (max-width:1000px)일 때 side_box가 none이므로 맞춰줌
         
-    }else{
-        //variableWidth.removeAttribute('style');
-        for(let i=0; i<variableWidth.length; i++){
-            //variableWidth[i].removeAttribute('style');
-            if(window.innerWidth > 600){
-                variableWidth[i].removeAttribute('style');
+        if(matchMedia('screen and (max-width : 800px)').matches){  //스크린 좌우가 800px이하로 내려가면 실행
+            //variableWidth.style.width = window.innerWidth -20 + 'px'; 을 querySelectorAll('.contents_box .contents')로 잡아서  배열로 
+            for(let i=0; i<variableWidth.length; i++){
+                variableWidth[i].style.width = window.innerWidth -20 + 'px';
+            }
+        }else{
+            //variableWidth.removeAttribute('style');
+            for(let i=0; i<variableWidth.length; i++){
+                //variableWidth[i].removeAttribute('style');
+                if(window.innerWidth > 600){
+                    variableWidth[i].removeAttribute('style');
+                }
             }
         }
+    }else{
+        hidden_menu.removeAttribute('style');
     }
-
-    
 }
 
 function scrollFunc(){

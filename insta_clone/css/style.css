@@ -198,7 +198,7 @@ body{
 #main_container .inner{
     width: 935px;
     /*height: 500px;*/
-    background:white;
+    background:#fafafa;
     position: relative;
 }
 
@@ -206,7 +206,7 @@ body{
 
 .contents{
     max-width: 614px; /*최대 좌우값만 설정, 반응형 조절은 js로*/
-    /*height: 500px;*/
+    /*height: 500px; 자식들이 높이값 부여*/
     border: 1px solid rgba(0,0,0,0.09);
     border-radius: 3px;
     margin-bottom: 60px;
@@ -347,7 +347,7 @@ body{
 
 .side_box{
     width: 293px;
-    background: pink;
+    background: transparent;
     position: absolute; /*기준점은 #main_container .inner*/
     right: 0;
     top: 0;
@@ -428,6 +428,7 @@ body{
 
 .hidden_menu{ /*반응형 조절은 js로*/
     width: 614px;
+    display: none;
     /*height: 100px;*/
     /*background: red;*/
     position: absolute;
@@ -496,5 +497,8 @@ body{
 @media screen and (max-width:650px){
     #header .search_box{
         display: none;
+    }
+    .hidden_menu{ 
+        width: 94.4%;
     }
 }

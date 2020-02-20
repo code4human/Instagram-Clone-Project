@@ -6,6 +6,7 @@ print('제 이름은', name, '입니다.' '제 나이는', age, '입니다.')  #
 print('제 이름은 %s입니다. 제 나이는 %s입니다.'%(name, age))
 print('제 이름은 {}입니다. 제 나이는 {}입니다.'.format(name, age))
 print('제 이름은 {0}입니다. 제 나이는 {0}입니다.'.format(name, age)) #뒤에서 넣을 것의 index로 넣음.
+print( f'제 이름은 {name}입니다. 제 나이는 {age}입니다.' )
 
 s =  '제 이름은 {name}입니다. 제 나이는 {age}입니다.'
 print(s.format(name='Taeeun', age=23))
